@@ -5,63 +5,70 @@
 //Variables
 unsigned long timeprevious = millis();
 int transistor_rasp = 8 ;
-int rasp_state = 11; // Pin 23 of Rasp
-int rasp_shutdown_command = 12; //Pin 22 of Rasp
+int servo_control = 9;
 
 //Objects
 Servo myservo;
 
 void setup() {
-  Serial.begin(9600);
-
+  //Serial.begin(9600);
   pinMode(transistor_rasp, OUTPUT);
-  pinMode(rasp_state,INPUT);
-  pinMode(rasp_shutdown_command,OUTPUT);
-
+  pinMode(servo_control, OUTPUT);
 }
 
 void loop() {
-
-  delay(2000);
-  Serial.println("Hello");
-
+  delay(1000);
+  blk(3);
+  //Serial.println("hey");
   //********* Turn on Servo & Raspberry *********
   digitalWrite(transistor_rasp, HIGH);   
+  delay(1500);
+  servo(80);
+  delay(500);
+
+  //********* Wait 2 min *********
+  for (int k = 1; k <= 12; k++) { 
+  LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+  blk(12-k+1);
+  }
   delay(1000);
-  myservo.attach(9);  
+  blk(2);
+  //********* Turn off Servo *********
+  servo(0);
+  delay(100);
+  digitalWrite(servo_control, LOW);   
+  delay(100);
+  digitalWrite(transistor_rasp, LOW);   
+  delay(100);
+  blk(3);
+  //********* sleepMode *********
+  //Serial.println("bye");
+
   delay(1000);
-  myservo.write(80);              
-  delay(2000); 
+  for (int j = 1; j <= 8; j++){
+    for (int i = 1; i <= 8*56; i++) { 
+      LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
+    }
+    delay(1000);
+    blk(1);
+  }
+  //Serial.println("Wake up");
+}
+
+void blk(int j) {
+  for (int i = 1; i <= j; i++) { 
+    digitalWrite(13,HIGH);
+    delay(25);
+    digitalWrite(13,LOW);
+    delay(100);
+  }
+}
+
+void servo(int i) {
+  myservo.attach(servo_control);  
+  delay(1000);
+  myservo.write(i);              
+  delay(1500); 
   myservo.detach();  
   delay(200);
-  
-  //********* Wait for raspberry response or 4 min *********
-  timeprevious = millis();  
-  while (digitalRead(rasp_state)==0 && (millis() - timeprevious) < 240000){
-    delay(500);
-  }
-  if ((millis() - timeprevious) > 240000) {Serial.println("times'up.");}
-  
-  digitalWrite(rasp_shutdown_command,HIGH);
-  delay(2500);
-  digitalWrite(rasp_shutdown_command,LOW);
-  //********* Turn off Servo & Raspberry *********
-  myservo.attach(9);  
-  delay(1000);
-  myservo.write(0);              
-  delay(1000); 
-  myservo.detach();
-  Serial.println("waiting 15sec for raspberry shutdown...");  
-  delay(15000);
-  digitalWrite(transistor_rasp, LOW);
-  delay(1000); 
-
-  //********* sleepMode *********
-  Serial.println("Goodnight");
-  delay(1000);
-  for (int i = 0; i <= 400*8; i++) { 
-  LowPower.powerDown(SLEEP_8S, ADC_OFF, BOD_OFF);
-  }
-  delay(1000);
-  Serial.println("Wake up");
 }
