@@ -2,7 +2,9 @@
 
 ## Parametrer le raspberry
 
-sudo apt-get install wiringpi
+installer les librairies nécessaires : 
+`sudo apt-get install wiringpi`
 
-sudo nano /etc/rc.local
-sudo bash /home/pi/Viticam.sh &
+Lancer le script au démarrage du raspberry :
+`sudo nano /etc/rc.local
+sudo bash /home/pi/Viticam.sh &`
