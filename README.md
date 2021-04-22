@@ -1,19 +1,19 @@
-# Viticam
-Le projet Viticam permet de développer une caméra connectée qui envoie des photos à intervalle régulière.
-Le système comprend principalement un bloc "Acquisition & envoi de l'imagea, et un bloc "Allumage et Mise en veille du système" : 
+# Viticam_AgroTIC
+Le projet Viticam d'AgroTIC permet de développer une caméra connectée Low-cost qui envoie des photos à intervalle régulière. la caméra est protégée par un boitier et l'objectif est à l'abri de la poussière & des interventions agricoles grâce à un clapet commandé par la Viticam.
+Le système comprend principalement une partie "Acquisition & envoi de l'imagea, et une partie "Allumage et Mise en veille du système" : 
 
-- Un bloc "Acquisition et envoi de l'image"
+- Partie "Acquisition et envoi de l'image"
   - Une Raspberry Pi zero
   - Une PiCam V2.1 reliée au Raspberry par le connecteur caméra
   - Un dongle 4G fonctionnel (et une carte SIM avec forfait 50Mo/mois minimum)
-- Un bloc "Allumage et Mise en veille du système"
+- Partie "Allumage et Mise en veille du système"
   - Un arduino Pro mini 5V 
   - Un transistor pour couper le courant alimentant la Raspberry
   - Un servo-moteur commandant l'ouverture / fermeture d'un clapet
-- Un bloc "Batteries"
+- Partie "Batteries"
   - 4 Piles LiPo reliées 2 à 2 pour délivrer 7.4Volts
   - 1 batterie externe de 5600mAh 
-- Un boitier de protection pour ranger le tout
+- Un boitier de protection pour ranger les 3 parties
 
 ## Paramtrer le raspberry
 
