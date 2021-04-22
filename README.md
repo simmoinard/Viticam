@@ -4,14 +4,14 @@ Le système comprend principalement une partie "Acquisition & envoi de l'imagea,
 
 - Partie "Acquisition et envoi de l'image"
   - Une Raspberry Pi zero
-  - Un servo-moteur commandant l'ouverture / fermeture d'un clapet
+  - Un servo-moteur commandant l'ouverture / fermeture du clapet de protection
   - Une PiCam V2.1 reliée au Raspberry par le connecteur caméra
-  - Un dongle 4G fonctionnel (et une carte SIM avec forfait 50Mo/mois minimum)
+  - Un dongle 4G USB (et une carte SIM avec forfait 50Mo/mois minimum)
 - Partie "Allumage et Mise en veille du système"
-  - Un arduino Pro mini 5V 
+  - Un arduino Pro mini 5V
   - Un transistor pour couper le courant alimentant la Raspberry
 - Partie "Batteries"
-  - 4 Piles LiPo reliées 2 à 2 pour délivrer 7.4Volts
+  - 4 Piles LiPo 3.7V reliées 2 à 2 pour délivrer 7.4V
   - 1 batterie externe de 5600mAh 
 - Un boitier de protection pour ranger les 3 parties
 
