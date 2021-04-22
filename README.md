@@ -15,7 +15,10 @@ Le système comprend principalement une partie "Acquisition & envoi de l'imagea,
   - 1 batterie externe de 5600mAh 
 - Un boitier de protection pour ranger les 3 parties
 
-## Paramtrer le raspberry
+## Liste du matériel nécessaire
+
+
+## Partie Raspberry
 
 installer les librairies nécessaires : 
 `sudo apt-get install wiringpi`
