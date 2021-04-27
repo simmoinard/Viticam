@@ -2,6 +2,7 @@
 
 echo "hello World !";
 
+# Shtudown HDMI port (battery saver)
 sudo tvservice --off
 
 # Activate servo motor and open cache
