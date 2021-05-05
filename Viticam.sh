@@ -45,7 +45,7 @@ current_date = now.strftime("%Y-%m-%d_%H%M%S")
 
 print("date and time =", current_date)
 
-session = ftplib.FTP('ftp.agrotic.org','simondev@agrotic.org','9kv7LE0syxq')
+session = ftplib.FTP('ftp.agrotic.org','simondev@agrotic.org','**********')
 file = open('/home/pi/Viticam/temp.jpg','rb')
 session.storbinary('STOR /img/dev1_'+ current_date +'.jpg', file)
 file.close()
